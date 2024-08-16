@@ -45,6 +45,8 @@ This code is implemented based on timm, and we have tested the code under the fo
 
 https://drive.google.com/drive/folders/1chr4IKr7JqnS02pVwZV6yNAgxAP58gg9?usp=sharing
 
+## Acknowledgement
+
 If you find that our work is helpful to you, please star this project and consider cite:
 ```
 @inproceedings{li2024pinpp,
