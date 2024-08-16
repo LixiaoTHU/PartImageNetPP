@@ -1,0 +1,99 @@
+# distributed setting
+distributed: True
+
+# model parameters
+model: resnet50
+num_classes: 1000
+seg_classes: 3311
+lambdas: 1.0
+ignore_blank: True
+freeze_epoch: 0
+model_type: 'partmodel'
+partmodel_type: 'twostage'
+output_size: [[7, 7]]
+pretrain: '/home/user/ssd2/workdir/imgnetrock/resnet50-tv2.pth'
+full_pretrain: True
+amp: True
+
+
+bn_momentum: null
+bn_eps: null
+sync_bn: False
+dist_bn: reduce
+
+
+# optimizer parameters
+opt: sgd
+opt_eps: 1.0e-8
+opt_betas: null
+momentum: 0.9
+weight_decay: 1.0e-4
+
+# lr schedule
+epochs: 80
+sched: cosine
+lrb: 0.2
+lr: null
+lr_noise: null
+lr_noise_pct: 0.67
+lr_noise_std: 1.0
+lr_cycle_mul: 1.0
+lr_cycle_decay: 0.5
+lr_cycle_limit: 1
+lr_k_decay: 1.0
+warmup_lr: 1.0e-3
+min_lr: 1.0e-2
+epoch_repeats: 0
+start_epoch: null
+decay_epochs: 30
+warmup_epochs: 2
+cooldown_epochs: 0
+patience_epochs: 0
+decay_rate: 0.1
+drop_path_rate: 0.0
+
+# dataset parameters
+batch_size: 64
+train_dir: '/home/user/ssd2/partimagenetpp/train/'
+eval_dir: '/home/user/ssd2/partimagenetpp/val_1w/'
+test_dir: '/home/user/ssd2/partimagenetpp/val_1w/img/'
+test_file: "data/imagenet_test_1k_1w.txt" 
+input_size: 224
+crop_pct: 0.875
+interpolation: bicubic
+mean: [0.485, 0.456, 0.406]
+std: [0.229, 0.224, 0.225]
+
+
+no_aug: False
+# augmentation
+color_jitter: 0.1
+aa: null
+aug_splits: 0
+
+
+mixup_prob: 0.0
+smoothing: 0.1
+train_interpolation: bicubic
+
+
+# ema
+model_ema: True
+model_ema_force_cpu: False
+model_ema_decay: 0.9998
+
+# misc
+seed: 0
+log_interval: 50
+recovery_interval: 0
+num_workers: 8
+eval_metric: advtop1
+pin_mem: True
+
+# advtrain
+advtrain: True
+attack_criterion: mixup
+attack_it: 2
+
+# output setting
+output_dir: '/home/user/ssd2/workdir/imgnetrock/1k_pp/r50_part_pp_twostage_at'
