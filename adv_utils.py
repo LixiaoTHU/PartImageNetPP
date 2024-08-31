@@ -172,7 +172,7 @@ def adv_generator(args, images, target, model, eps, attack_steps, attack_lr, ran
 
     if use_best:
         with autocast(enabled = scaler is not None):
-            adv_losses = attack_criterion(model(images), target)
+            adv_losses = attack_criterion(model((images-mean_tensor)/std_tensor), target)
         varlist = [adv_losses, best_loss, images, best_x]
         best_loss, best_x = replace_best(*varlist) if use_best else (adv_losses, images)
     else:
