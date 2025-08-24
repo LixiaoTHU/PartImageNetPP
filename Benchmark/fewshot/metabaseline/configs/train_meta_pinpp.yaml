@@ -1,0 +1,24 @@
+train_dataset: pinpp
+train_dataset_args: {split: train}
+tval_dataset: pinpp
+tval_dataset_args: {split: test}
+val_dataset: pinpp
+val_dataset_args: {split: val}
+
+model: meta-baseline
+model_args: 
+    encoder: resnet12
+    encoder_args: {}
+load_encoder: your_path/epoch-xxx.pth
+
+n_way: 5
+n_shot: 5
+n_query: 15
+train_batches: 200
+ep_per_batch: 1
+
+max_epoch: 20
+optimizer: sgd
+optimizer_args: {lr: 0.001, weight_decay: 5.e-4}
+
+visualize_datasets: True
